@@ -13,7 +13,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodDetection">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.Weight"></activity>
+        <activity android:name=".activities.SearchResult" />
+        <activity android:name=".activities.MealBuilder" />
+        <activity android:name=".activities.fragments.MealTypeDailogFragments" />
+        <activity android:name=".activities.fragments.IngradientAddFragments" />
+        <activity android:name=".activities.fragments.DataPickerFragments" />
+        <activity android:name=".activities.DailyView" />
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

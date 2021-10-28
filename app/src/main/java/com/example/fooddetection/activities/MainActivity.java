@@ -1,4 +1,4 @@
-package com.example.fooddetection;
+package com.example.fooddetection.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -17,6 +17,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.fooddetection.R;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
