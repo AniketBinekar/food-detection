@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
     private List<String> labels;
     ImageView imageView;
     Uri imageUri;
-    Button classifyBtn;
+    Button classifyBtn,out;
     TextView prediction;
 
 
@@ -78,6 +78,14 @@ public class MainActivity extends AppCompatActivity {
         classifyBtn = findViewById(R.id.captureBtn2);
         prediction = findViewById(R.id.prdictTv);
         dishNameTV = findViewById(R.id.idTVDishName);
+        out=findViewById(R.id.captureBtn3);
+        out.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent ans=new Intent(MainActivity.this,DailyView.class);
+                startActivity(ans);
+            }
+        });
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override

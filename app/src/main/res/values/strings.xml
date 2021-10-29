@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">food detection</string>
+    <string name="daily_view_left_btn" />
+    <string name="daily_view_right_btn" />
+    <string name="todo">TODO</string>
 </resources>

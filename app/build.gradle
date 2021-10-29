@@ -1,6 +1,26 @@
-plugins {
-    id 'com.android.application'
+//plugins {
+//    id 'com.android.application'
+//}
+buildscript {
+    ext.kotlin_version = '1.2.21'
+
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.10"
+    }
 }
+
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+//project.ext.ASSET_DIR = projectDir.toString() + '/src/main/assets'
+
+//assert file(project.ext.ASSET_DIR + "/graph.lite").exists()
+//assert file(project.ext.ASSET_DIR + "/labels.txt").exists()
 
 android {
     compileSdkVersion 30
@@ -31,34 +51,71 @@ android {
     buildFeatures {
         mlModelBinding true
     }
+    aaptOptions {
+        noCompress "tflite"
+        noCompress "lite"
+    }
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {
 
-    implementation 'androidx.appcompat:appcompat:1.3.0'
+    implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
     //pieChart
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 //    //tensorFlow
-    implementation ('org.tensorflow:tensorflow-lite:0.0.0-nightly'){changing = true}
+    implementation ('org.tensorflow:tensorflow-lite:2.6.0'){changing = true}
     implementation ('org.tensorflow:tensorflow-lite-gpu:0.0.0-nightly'){changing = true}
     implementation ('org.tensorflow:tensorflow-lite-support:0.0.0-nightly'){changing = true}
-    implementation 'org.tensorflow:tensorflow-lite-metadata:0.1.0-rc1'
+    implementation 'org.tensorflow:tensorflow-lite-metadata:0.1.0-rc2'
 
-//    implementation 'org.tensorflow:tensorflow-lite-task-vision:0.1.0'
-//    implementation 'org.tensorflow:tensorflow-lite-task-text:0.1.0'
+    //Skale Bluetooth Kitchen Scale
+    implementation 'com.atomaxinc.android.skale:skale-utilities:0.1.0@aar'
+
+    implementation 'org.tensorflow:tensorflow-lite:'
+    //noinspection GradleCompatible
+    implementation 'com.android.support:design:27.1.0'
+    implementation 'com.android.support:support-annotations:28.0.0'
+    //noinspection GradleCompatible
+    implementation 'com.android.support:support-v13:27.1.0'
+
+    //Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+
+    // ViewModel and LiveData
+    implementation "android.arch.lifecycle:extensions:1.1.1"
+    // alternatively, just ViewModel
+    implementation "android.arch.lifecycle:viewmodel:1.1.1"
+    // alternatively, just LiveData
+    implementation "android.arch.lifecycle:livedata:1.1.1"
+    //noinspection LifecycleAnnotationProcessorWithJava8
+    annotationProcessor "android.arch.lifecycle:compiler:1.1.1"
+    // Room (use 1.1.0-alpha1 for latest alpha)
+    implementation "android.arch.persistence.room:runtime:1.1.1"
+    annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
+    // Paging
+    implementation "android.arch.paging:runtime:1.0.1"
+    // Test helpers for LiveData
+    testImplementation "android.arch.core:core-testing:1.1.1"
+    // Test helpers for Room
+    testImplementation "android.arch.persistence.room:testing:1.1.1"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.5.10"
+    //noinspection GradleCompatible
+//    implementation 'com.android.support:support-v4:27.1.0'
 
 
-//    implementation ('org.tensorflow:tensorflow-lite:0.0.0-nightly-SNAPSHOT'){changing = true}
-//    implementation ('org.tensorflow:tensorflow-lite-gpu:0.0.0-nightly-SNAPSHOT'){changing = true}
-//    implementation ('org.tensorflow:tensorflow-lite-support:0.0.0-nightly-SNAPSHOT'){changing = true}
-
-
-
-
-
-    testImplementation 'junit:junit:4.+'
+    testImplementation 'junit:junit:'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+}
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://google.bintray.com/tensorflow'
+    }
 }
