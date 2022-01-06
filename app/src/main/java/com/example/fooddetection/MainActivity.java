@@ -12,6 +12,11 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.BufferedReader;
@@ -20,34 +25,44 @@ import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+//import java.util.List;
 
-import lecho.lib.hellocharts.model.PieChartData;
-import lecho.lib.hellocharts.model.SliceValue;
-import lecho.lib.hellocharts.view.PieChartView;
+//import lecho.lib.hellocharts.view.PieChartView;
+
+//import lecho.lib.hellocharts.model.PieChartData;
+//import lecho.lib.hellocharts.model.SliceValue;
+//import lecho.lib.hellocharts.view.PieChartView;
 
 public class MainActivity extends AppCompatActivity {
     public static MainActivity mainActivity;
     private static final String calorieInfoFile = "calorie_info.txt";
     private static HashMap<String, Integer> calorieInfo = new HashMap<>();
-    PieChartView pieChartView;
+    PieChart pieChart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        pieChartView = findViewById(R.id.chart);
+        pieChart=findViewById(R.id.piechart);
+        ArrayList<PieEntry>visitor=new ArrayList<>();
+        visitor.add(new PieEntry(508,2016));
+        visitor.add(new PieEntry(508,2016));
+        visitor.add(new PieEntry(508,2016));
+        visitor.add(new PieEntry(508,2016));
+        visitor.add(new PieEntry(508,2016));
+        visitor.add(new PieEntry(508,2016));
 
-        List pieData = new ArrayList<>();
-        pieData.add(new SliceValue(15, Color.BLUE).setLabel("Q1: $10"));
-        pieData.add(new SliceValue(25, Color.GRAY).setLabel("Q2: $4"));
-        pieData.add(new SliceValue(10, Color.RED).setLabel("Q3: $18"));
-        pieData.add(new SliceValue(60, Color.MAGENTA).setLabel("Q4: $28"));
+        PieDataSet pieDataSet=new PieDataSet(visitor,"food data");
+        pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        pieDataSet.setValueTextColor(Color.BLACK);
+        pieDataSet.setValueTextSize(16f);
 
-        PieChartData pieChartData = new PieChartData(pieData);
-        pieChartData.setHasLabels(true).setValueLabelTextSize(14);
-        pieChartData.setHasCenterCircle(true).setCenterText1("Sales in million").setCenterText1FontSize(20).setCenterText1Color(Color.parseColor("#0097A7"));
-        pieChartView.setPieChartData(pieChartData);
+        PieData pieData=new PieData(pieDataSet);
+        pieChart.setData(pieData);
+        pieChart.getDescription().setEnabled(false);
+        pieChart.setCenterText("food data");
+        pieChart.animate();
+
 
         mainActivity = this;
         try {
