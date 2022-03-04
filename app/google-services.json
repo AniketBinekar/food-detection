@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "224022710734",
+    "project_id": "flutter-web-application-fc85d",
+    "storage_bucket": "flutter-web-application-fc85d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:224022710734:android:04bddc70518ed9b5c1839f",
+        "android_client_info": {
+          "package_name": "com.example.fooddetection"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "224022710734-3r31jq41durk0ok61qclki5ss51kv8is.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrv2Gep30y74Z1zvGrwlj-DyWbIZlRzew"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "224022710734-3r31jq41durk0ok61qclki5ss51kv8is.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

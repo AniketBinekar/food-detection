@@ -26,6 +26,7 @@
     <com.example.fooddetection.customview.OverlayView
         android:id="@+id/tracking_overlay"
         android:layout_width="match_parent"
+        android:layout_gravity="center"
         android:layout_height="match_parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
